@@ -1,13 +1,16 @@
 <h1>Articles</h1>
+Our blog bas <%= Article.public_count %> articles and counting!
 <ul>
 <% @articles.each do |article|%> <%# evaluate the code enclosed in these tags %>
+<% unless article.archived? %>
 <li>
 <%# <a href="<%=article_path(article) DON"T NEED IT ANYMORE because I'm using link_to %>
 <%= link_to article.title, article %>
 </li> <%# evaluate the code enclosed in these tags AND output the value it returns %>
 <% end %>
+<%end%>
 </ul>
-
+<%= link_to "New Article", new_article_path %>
 <%# The resources method also sets up URL and path helper methods that we can use to keep our code 
 from depending on a specific route configuration. The values in the "Prefix" column above plus a suffix 
 of _url or _path form the names of these helpers. For example, the article_path helper 
